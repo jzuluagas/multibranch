@@ -31,6 +31,7 @@ pipeline{
                                         sh "cat $USER"
                                         sh "echo $PASSWORD >> pass"
                                         sh "cat pass"
+                                    }
                                     catch(error){
                                         env.VERSION = 1.0
                                         env.SCRIPT = 'Baseline'
