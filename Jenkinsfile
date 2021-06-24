@@ -1,14 +1,6 @@
 pipeline{
     agent none
 
-    triggers{
-        bitbucketPush()
-    }
-
-    options { 
-        buildDiscarder(logRotator(numToKeepStr: '10')) 
-        disableConcurrentBuilds() 
-    }
     script {
         env.ENVIRONMENT = 'test2'
         if(env.BRANCH_NAME == 'master'){
@@ -45,4 +37,4 @@ pipeline{
             }
         }
     }
-}
+
