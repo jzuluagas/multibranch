@@ -1,11 +1,15 @@
+def getEnvForBD(branch) {
+  if(env.BRANCH_NAME == 'master'){
+    return 'test2'
+    }else {
+      return 'test1'
+    }
+  } 
 pipeline{
     agent none
 
-    script {
-        env.ENVIRONMENT = 'test2'
-        if(env.BRANCH_NAME == 'master'){
-            env.ENVIRONMENT = 'test1'
-        }
+    environment{
+      ENVIRONMENT = getEnvForBD(env.BRANCH_NAME)
     }
     stages{
         stage('test1') {
@@ -37,4 +41,3 @@ pipeline{
             }
         }
     }
-
